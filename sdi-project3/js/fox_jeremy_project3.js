@@ -1,9 +1,10 @@
 (function() {
-  var array, boolean, disneyStore, number, object, print, string, target, toysRUs, walmart;
+  var array, boolean, disneyStore, number, object, print, string, target, totalStores, toysRUs, walmart;
   toysRUs = this.json.Stores[0].storeName;
   target = this.json.Stores[1].storeName;
   walmart = this.json.Stores[2].storeName;
   disneyStore = this.json.Stores[3].storeName;
+  totalStores = this.json.Stores.length;
   print = function(param) {
     return console.log(param);
   };
@@ -19,7 +20,7 @@
   };
   number = function(numberArgument) {
     var v;
-    v = "Number Function Store = " + numberArgument;
+    v = "Total Available Stores = " + numberArgument;
     return v;
   };
   string = function(stringArgument) {
@@ -34,7 +35,7 @@
   };
   print(boolean(toysRUs));
   print(array(target));
-  print(number(walmart));
+  print(number(totalStores));
   print(string(disneyStore));
-  print(object(toysRUs));
+  print(object(walmart));
 }).call(this);
