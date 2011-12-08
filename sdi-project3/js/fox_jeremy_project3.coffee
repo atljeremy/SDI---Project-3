@@ -19,6 +19,10 @@ boolean = (booleanArgument) ->
   return v
   
 array = (arrayArgument) ->
+  # Conditional
+  if(something == somethinElse){
+    console.log("Inside conditional");
+  }
   v = "Array Function Store = " + arrayArgument
   return v
   
@@ -31,8 +35,25 @@ string = (stringArgument) ->
   return v
   
 object = (objectArgument) ->
+  # Nested Conditional
+  if(something == somethingElse){
+    if(someone == someoneElse){
+      console.log("Inside nested conditional");
+    }
+  }
   v = "Object Function Store = " + objectArgument
   return v
+  
+# Nested Loop
+for doNothing in @json.Stores
+  for storeIndex in @json.Stores
+    console.log storeIndex
+
+# For loop
+doNothing for doNothing in @json.Stores
+
+# While loop
+console.log "Some String" while 10 < 20
 
 # Story and functions with console ouput
 print(boolean(toysRUs))
