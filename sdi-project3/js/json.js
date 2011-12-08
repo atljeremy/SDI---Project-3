@@ -3,21 +3,16 @@
     "Stores": [
       {
         "storeName": "Toys R Us",
-        "kitchenSet": "Kitchen Set",
-        "bike": "Bike",
-        "artSet": "Art Set"
+        "toys": ["Kitchen Set", "Bike", "Art Set"]
       }, {
         "storeName": "Target",
-        "thomas": "Thomas and Friends Train",
-        "rockStarMickey": "Rock Star Mickey"
+        "toys": ["Thomas and Friends Train", "Rock Star Mickey", "Tricycle"]
       }, {
         "storeName": "Wal-Mart",
-        "easel": "Crayola Double Easel",
-        "trainTable": "Wooden Train and Activity Table",
-        "barbieDream": "Barbie 3-Story Dream"
+        "toys": ["Crayola Double Easel", "Wooden Train and Activity Table", "Barbie 3-Story Dream"]
       }, {
         "storeName": "Disney Store",
-        "snowWhite": "Snow White Doll"
+        "toys": ["Snow White Doll", "Cinderella with Horse and Buggy", "Disney Doll Collection"]
       }
     ]
   };

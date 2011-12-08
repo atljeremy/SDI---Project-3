@@ -3,63 +3,82 @@
 # Created For: SDI Online
 # Implementation of the Project 3 flowchart
 
-# Cach JSON Object Properties As Variables
+# Cache JSON Object Properties As Variables
 toysRUs     = @json.Stores[0].storeName # String
 target      = @json.Stores[1].storeName # String
 walmart     = @json.Stores[2].storeName # String
 disneyStore = @json.Stores[3].storeName # String
 totalStores = @json.Stores.length
 
+# variables
+@goingShopping = "My wife, Courtney, and I went on our first ever \"black friday\" shopping spree this past Friday."
+
 #functions
 print = (param) ->
   console.log(param)
 
-boolean = (booleanArgument) ->
-  v = "Boolean Function Store = " + booleanArgument
-  return v
-  
-array = (arrayArgument) ->
+# Boolean function
+firstBlackFridayShopping = (itIsBlackFriday) ->
   # Conditional
-  if(something == somethinElse){
-    console.log("Inside conditional");
-  }
-  v = "Array Function Store = " + arrayArgument
+  if(itIsBlackFriday)
+    v = @goingShopping
+  else
+    v = "My wife, Courtney, and I did not go on our first ever \"black friday\" shopping spree this past Friday."
   return v
-  
+
+# Array function
+targetToyOptions = (arrayArgument) ->
+  v = "What we found to be the hardest part of the entire venture, was trying to decide what toys to buy. For example, at toys-r-us we had 3 options. We could get a kitchen set, bike, or art set."
+  return v
+
+# Number function
 number = (numberArgument) ->
   v = "Total Available Stores = " + numberArgument
   return v
-  
-string = (stringArgument) ->
-  v = "String Function Store = " + stringArgument
+
+# String function
+ohTheHorror = (blackFriday, stores) ->
+  if (blackFriday != null and stores != null)
+    v = "We had heard all kinds of horror stories, from friends and family, about how crazy it is to try and shop on #{blackFriday}, but we decided to brave the crowds anyway. We knew it was going to be busy anywhere we decided to try and shop, but we decided to go to #{stores} different places.";
+  else
+    v = "We had heard all kinds of horror stories, from friends and family, about how crazy it is to try and shop on #{blackFriday}, so we decided to not go shopping."
   return v
-  
-object = (objectArgument) ->
-  # Nested Conditional
-  if(something == somethingElse){
-    if(someone == someoneElse){
-      console.log("Inside nested conditional");
-    }
-  }
-  v = "Object Function Store = " + objectArgument
+
+# Object function
+stores = (object) ->
+  @object = object.Stores
+  @s = ""
+  @t = ""
+  # Nested Conditional and Nested Loop
+  if(@object.length == 4)
+    if(@object[0].storeName == "Toys R Us")
+      for store in @object
+        @s = @s + store.storeName + ", "
+        for toy in store.toys
+          @t = @t + toy + ", "
+    else
+      v = "We were not able to get to Toys R Us. It was just to busy."
+  else
+    v = "We were not able to get to any stores. It was just to busy."
+  v = "We went to #{s} and we looked at a bunch of toys including #{t}. Yes, all of these stores were very busy, but we were able to get some really good deals on toys for our children."
   return v
-  
-# Nested Loop
-for doNothing in @json.Stores
-  for storeIndex in @json.Stores
-    console.log storeIndex
 
 # For loop
 doNothing for doNothing in @json.Stores
 
 # While loop
-console.log "Some String" while 10 < 20
+i = 0
+while i < 2
+  console.log "Some String"
+  i++
 
-# Story and functions with console ouput
-print(boolean(toysRUs))
-print(array(target))
+# functin needing implementation
+print(targetToyOptions(target))
 print(number(totalStores))
-print(string(disneyStore))
-print(object(walmart))
 
-# My wife, Courtney, and I went on our first ever "black friday" shopping spree this past Friday. We had heard all kinds of horror stories, from friend and family, about how crazy it is to try and shop on the day after thanksgiving, but we decided to brave the crowds anyway. We knew it was going to be busy anywhere we decided to try and shop, so we decided to go to a few different places. We went to toys-r-us, wal-mart, target, and the disney store in the mall. Yes, all of these stores were very busy, but we were able to get some really good deals on toys for our children. What we found to be the hardest part of the entire venture, was trying to decide what toys to buy. For example, at toys-r-us we had 3 options. We could get a kitchen set, bike, or art set. We liked all of them, but had to make a choice. We chose the kitchen set because we thought our 2 year old would use this more than any of the other 2 choices. Overall, it was a great experience and we were able to get about $450 worth of merchandise for only $260.
+################### IMPLEMENTED FUNCTION #####################
+print(firstBlackFridayShopping(true))
+print(ohTheHorror("the day after thanksgiving", totalStores))
+print(stores(@json))
+
+#   We liked all of them, but had to make a choice. We chose the kitchen set because we thought our 2 year old would use this more than any of the other 2 choices. Overall, it was a great experience and we were able to get about $450 worth of merchandise for only $260.
