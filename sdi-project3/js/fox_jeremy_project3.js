@@ -1,19 +1,18 @@
 (function() {
-  var disneyStore, doNothing, firstBlackFridayShopping, number, ohTheHorror, print, stores, target, targetToyOptions, targetToys, totalStores, toysRUs, walmart, _i, _len, _ref;
+  var disneyStore, firstBlackFridayShopping, number, ohTheHorror, ourChoice, print, stores, target, targetToyOptions, targetToys, totalStores, totalTargetToys, toysRUs, walmart;
   toysRUs = this.json.Stores[0].storeName;
   target = this.json.Stores[1].storeName;
   walmart = this.json.Stores[2].storeName;
   disneyStore = this.json.Stores[3].storeName;
   targetToys = this.json.Stores[1].toys;
+  totalTargetToys = this.json.Stores[1].toys.length;
   totalStores = this.json.Stores.length;
+  this.ourBudget = this.json.ourBudget;
+  ourChoice = this.json.ourChoice;
+  console.log(this.ourBudget);
   this.goingShopping = "My wife, Courtney, and I went on our first ever \"black friday\" shopping spree this past Friday.";
   print = function(param) {
     return console.log(param);
-  };
-  number = function(numberArgument) {
-    var v;
-    v = "Total Available Stores = " + numberArgument;
-    return v;
   };
   firstBlackFridayShopping = function(itIsBlackFriday) {
     var v;
@@ -61,23 +60,32 @@
   };
   targetToyOptions = function(target, targetToys) {
     var i, v;
-    this.t = "";
+    this.tt = "";
     i = 0;
     while (i < targetToys.length) {
-      this.t = this.t + targetToys[i] + ", ";
+      this.tt = this.tt + targetToys[i] + ", ";
       i++;
     }
     v = "What we found to be the hardest part of the entire venture, was trying to decide what toys to buy. For example, at " + target + " we had " + targetToys.length + " options. We could get a " + t;
     return v;
   };
-  _ref = this.json.Stores;
-  for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-    doNothing = _ref[_i];
-    doNothing;
-  }
-  print(number(totalStores));
-  print(firstBlackFridayShopping(true));
+  number = function(int, toys) {
+    var budget, leftOver, toy, v, _i, _len;
+    budget = "$" + this.ourBudget;
+    this.choice = "";
+    leftOver = toys.length - 1;
+    for (_i = 0, _len = toys.length; _i < _len; _i++) {
+      toy = toys[_i];
+      if (toy === "Rock Star Mickey") {
+        this.choice = toy;
+      }
+    }
+    v = "We liked all of them, but had to make a choice. We chose the " + choice + " because we thought our 2 year old would use this more than any of the other " + leftOver + " choices. Overall, it was a great experience and we were able to get about $450 worth of merchandise for only $260 with a budget of " + budget;
+    return v;
+  };
+  print(firstBlackFridayShopping(ourChoice));
   print(ohTheHorror("the day after thanksgiving", totalStores));
   print(stores(this.json));
   print(targetToyOptions(target, targetToys));
+  print(number(totalTargetToys, targetToys));
 }).call(this);

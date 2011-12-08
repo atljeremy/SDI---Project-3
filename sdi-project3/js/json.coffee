@@ -24,4 +24,6 @@
       "storeName" : "Disney Store",
       "toys"      : ["Snow White Doll", "Cinderella with Horse and Buggy", "Disney Doll Collection"]
     }
-  ]
+  ],
+  "ourChoice"     : true,
+  "ourBudget"     : 300

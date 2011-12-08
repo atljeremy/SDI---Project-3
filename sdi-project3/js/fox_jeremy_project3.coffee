@@ -4,12 +4,17 @@
 # Implementation of the Project 3 flowchart
 
 # Cache JSON Object Properties As Variables
-toysRUs     = @json.Stores[0].storeName # String
-target      = @json.Stores[1].storeName # String
-walmart     = @json.Stores[2].storeName # String
-disneyStore = @json.Stores[3].storeName # String
-targetToys  = @json.Stores[1].toys      # Array
-totalStores = @json.Stores.length       # int
+toysRUs         = @json.Stores[0].storeName   # String
+target          = @json.Stores[1].storeName   # String
+walmart         = @json.Stores[2].storeName   # String
+disneyStore     = @json.Stores[3].storeName   # String
+targetToys      = @json.Stores[1].toys        # Array
+totalTargetToys = @json.Stores[1].toys.length # int
+totalStores     = @json.Stores.length         # int
+@ourBudget      = @json.ourBudget             # int
+ourChoice       = @json.ourChoice             # boolean
+
+console.log @ourBudget
 
 # variables
 @goingShopping = "My wife, Courtney, and I went on our first ever \"black friday\" shopping spree this past Friday."
@@ -18,14 +23,8 @@ totalStores = @json.Stores.length       # int
 print = (param) ->
   console.log(param)
 
-# Number function
-number = (numberArgument) ->
-  v = "Total Available Stores = " + numberArgument
-  return v
-
 # Boolean function
 firstBlackFridayShopping = (itIsBlackFriday) ->
-  # Conditional
   if(itIsBlackFriday)
     v = @goingShopping
   else
@@ -61,26 +60,29 @@ stores = (object) ->
   
 # Array function
 targetToyOptions = (target, targetToys) ->
-  @t = ""
+  @tt = ""
 
-  # While loop
   i = 0
   while i < targetToys.length
-    @t = @t + targetToys[i] + ", "
+    @tt = @tt + targetToys[i] + ", "
     i++
   v = "What we found to be the hardest part of the entire venture, was trying to decide what toys to buy. For example, at #{target} we had #{targetToys.length} options. We could get a #{t}"
   return v
+  
+# Number function
+number = (int, toys) ->
+  budget = "$"+@ourBudget
+  @choice = ""
+  leftOver = toys.length - 1
+  for toy in toys
+    if toy == "Rock Star Mickey"
+      @choice = toy
+  
+  v = "We liked all of them, but had to make a choice. We chose the #{choice} because we thought our 2 year old would use this more than any of the other #{leftOver} choices. Overall, it was a great experience and we were able to get about $450 worth of merchandise for only $260 with a budget of #{budget}"
+  return v
 
-# For loop
-doNothing for doNothing in @json.Stores
-
-# functions needing implementation
-print(number(totalStores))
-
-################### IMPLEMENTED FUNCTION #####################
-print(firstBlackFridayShopping(true))
+print(firstBlackFridayShopping(ourChoice))
 print(ohTheHorror("the day after thanksgiving", totalStores))
 print(stores(@json))
 print(targetToyOptions(target, targetToys))
-
-#   We liked all of them, but had to make a choice. We chose the kitchen set because we thought our 2 year old would use this more than any of the other 2 choices. Overall, it was a great experience and we were able to get about $450 worth of merchandise for only $260.
+print(number(totalTargetToys, targetToys))
