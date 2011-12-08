@@ -8,7 +8,8 @@ toysRUs     = @json.Stores[0].storeName # String
 target      = @json.Stores[1].storeName # String
 walmart     = @json.Stores[2].storeName # String
 disneyStore = @json.Stores[3].storeName # String
-totalStores = @json.Stores.length
+targetToys  = @json.Stores[1].toys      # Array
+totalStores = @json.Stores.length       # int
 
 # variables
 @goingShopping = "My wife, Courtney, and I went on our first ever \"black friday\" shopping spree this past Friday."
@@ -17,6 +18,11 @@ totalStores = @json.Stores.length
 print = (param) ->
   console.log(param)
 
+# Number function
+number = (numberArgument) ->
+  v = "Total Available Stores = " + numberArgument
+  return v
+
 # Boolean function
 firstBlackFridayShopping = (itIsBlackFriday) ->
   # Conditional
@@ -24,16 +30,6 @@ firstBlackFridayShopping = (itIsBlackFriday) ->
     v = @goingShopping
   else
     v = "My wife, Courtney, and I did not go on our first ever \"black friday\" shopping spree this past Friday."
-  return v
-
-# Array function
-targetToyOptions = (arrayArgument) ->
-  v = "What we found to be the hardest part of the entire venture, was trying to decide what toys to buy. For example, at toys-r-us we had 3 options. We could get a kitchen set, bike, or art set."
-  return v
-
-# Number function
-number = (numberArgument) ->
-  v = "Total Available Stores = " + numberArgument
   return v
 
 # String function
@@ -62,23 +58,29 @@ stores = (object) ->
     v = "We were not able to get to any stores. It was just to busy."
   v = "We went to #{s} and we looked at a bunch of toys including #{t}. Yes, all of these stores were very busy, but we were able to get some really good deals on toys for our children."
   return v
+  
+# Array function
+targetToyOptions = (target, targetToys) ->
+  @t = ""
+
+  # While loop
+  i = 0
+  while i < targetToys.length
+    @t = @t + targetToys[i] + ", "
+    i++
+  v = "What we found to be the hardest part of the entire venture, was trying to decide what toys to buy. For example, at #{target} we had #{targetToys.length} options. We could get a #{t}"
+  return v
 
 # For loop
 doNothing for doNothing in @json.Stores
 
-# While loop
-i = 0
-while i < 2
-  console.log "Some String"
-  i++
-
-# functin needing implementation
-print(targetToyOptions(target))
+# functions needing implementation
 print(number(totalStores))
 
 ################### IMPLEMENTED FUNCTION #####################
 print(firstBlackFridayShopping(true))
 print(ohTheHorror("the day after thanksgiving", totalStores))
 print(stores(@json))
+print(targetToyOptions(target, targetToys))
 
 #   We liked all of them, but had to make a choice. We chose the kitchen set because we thought our 2 year old would use this more than any of the other 2 choices. Overall, it was a great experience and we were able to get about $450 worth of merchandise for only $260.
