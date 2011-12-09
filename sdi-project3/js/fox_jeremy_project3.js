@@ -1,5 +1,5 @@
 (function() {
-  var disneyStore, firstBlackFridayShopping, number, ohTheHorror, ourChoice, print, stores, target, targetToyOptions, targetToys, totalStores, totalTargetToys, toysRUs, walmart;
+  var disneyStore, event, firstBlackFridayShopping, getEvent, number, ohTheHorror, ourChoice, print, setEvent, stores, target, targetToyOptions, targetToys, totalStores, totalTargetToys, toysRUs, walmart;
   toysRUs = this.json.Stores[0].storeName;
   target = this.json.Stores[1].storeName;
   walmart = this.json.Stores[2].storeName;
@@ -9,17 +9,24 @@
   totalStores = this.json.Stores.length;
   this.ourBudget = this.json.ourBudget;
   ourChoice = this.json.ourChoice;
-  console.log(this.ourBudget);
-  this.goingShopping = "My wife, Courtney, and I went on our first ever \"black friday\" shopping spree this past Friday.";
+  event = "";
+  getEvent = function() {
+    return this.event;
+  };
+  setEvent = function(setThis) {
+    this.event = setThis;
+  };
   print = function(param) {
-    return console.log(param);
+    console.log(param);
   };
   firstBlackFridayShopping = function(itIsBlackFriday) {
     var v;
     if (itIsBlackFriday) {
-      v = this.goingShopping;
+      setEvent("My wife, Courtney, and I went on our first ever \"black friday\" shopping spree this past Friday.");
+      v = getEvent();
     } else {
-      v = "My wife, Courtney, and I did not go on our first ever \"black friday\" shopping spree this past Friday.";
+      setEvent("My wife, Courtney, and I did not go on our first ever \"black friday\" shopping spree this past Friday.");
+      v = getEvent();
     }
     return v;
   };

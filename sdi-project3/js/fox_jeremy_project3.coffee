@@ -14,27 +14,37 @@ totalStores     = @json.Stores.length         # int
 @ourBudget      = @json.ourBudget             # int
 ourChoice       = @json.ourChoice             # boolean
 
-console.log @ourBudget
-
 # variables
-@goingShopping = "My wife, Courtney, and I went on our first ever \"black friday\" shopping spree this past Friday."
+event           = ""                          # String - used for event output
 
-#functions
+# Getter / Accessor
+getEvent = ->
+  return @event;
+
+# Setter / Mutator
+setEvent = (setThis) ->
+  @event = setThis;
+  return
+
+# function to print to console
 print = (param) ->
   console.log(param)
+  return
 
 # Boolean function
 firstBlackFridayShopping = (itIsBlackFriday) ->
   if(itIsBlackFriday)
-    v = @goingShopping
+    setEvent("My wife, Courtney, and I went on our first ever \"black friday\" shopping spree this past Friday.")
+    v = getEvent()
   else
-    v = "My wife, Courtney, and I did not go on our first ever \"black friday\" shopping spree this past Friday."
+    setEvent("My wife, Courtney, and I did not go on our first ever \"black friday\" shopping spree this past Friday.")
+    v = getEvent()
   return v
 
 # String function
 ohTheHorror = (blackFriday, stores) ->
   if (blackFriday != null and stores != null)
-    v = "We had heard all kinds of horror stories, from friends and family, about how crazy it is to try and shop on #{blackFriday}, but we decided to brave the crowds anyway. We knew it was going to be busy anywhere we decided to try and shop, but we decided to go to #{stores} different places.";
+    v = "We had heard all kinds of horror stories, from friends and family, about how crazy it is to try and shop on #{blackFriday}, but we decided to brave the crowds anyway. We knew it was going to be busy anywhere we decided to try and shop, but we decided to go to #{stores} different places."
   else
     v = "We had heard all kinds of horror stories, from friends and family, about how crazy it is to try and shop on #{blackFriday}, so we decided to not go shopping."
   return v
@@ -61,7 +71,6 @@ stores = (object) ->
 # Array function
 targetToyOptions = (target, targetToys) ->
   @tt = ""
-
   i = 0
   while i < targetToys.length
     @tt = @tt + targetToys[i] + ", "
@@ -77,7 +86,6 @@ number = (int, toys) ->
   for toy in toys
     if toy == "Rock Star Mickey"
       @choice = toy
-  
   v = "We liked all of them, but had to make a choice. We chose the #{choice} because we thought our 2 year old would use this more than any of the other #{leftOver} choices. Overall, it was a great experience and we were able to get about $450 worth of merchandise for only $260 with a budget of #{budget}"
   return v
 
