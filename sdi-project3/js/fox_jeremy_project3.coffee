@@ -27,11 +27,15 @@ setEvent = (setThis) ->
   @event = setThis;
   return
 
-# function to print to console
+# Procedure function to print to console
 print = (param) ->
-  console.log(param)
-  return
-
+  if(param != "")
+    console.log(param)
+    return
+  else
+    console.log("Sorry, nothing to output here!")
+    return
+  
 # Boolean function
 firstBlackFridayShopping = (itIsBlackFriday) ->
   if(itIsBlackFriday)
@@ -80,7 +84,7 @@ targetToyOptions = (target, targetToys) ->
   return v
   
 # Number function
-number = (int, toys) ->
+choices = (int, toys) ->
   budget = "$"+@ourBudget
   @choice = ""
   leftOver = toys.length - 1
@@ -107,5 +111,5 @@ print(firstBlackFridayShopping(ourChoice))
 print(ohTheHorror("the day after thanksgiving", totalStores))
 print(stores(@json))
 print(targetToyOptions(target, targetToys))
-print(number(totalTargetToys, targetToys))
+print(choices(totalTargetToys, targetToys))
 print(daddiesToys(toysForDaddy))

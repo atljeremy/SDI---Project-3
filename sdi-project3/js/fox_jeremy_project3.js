@@ -1,5 +1,5 @@
 (function() {
-  var daddiesToys, disneyStore, event, firstBlackFridayShopping, getEvent, number, ohTheHorror, ourChoice, print, setEvent, someToysForDaddy, stores, target, targetToyOptions, targetToys, totalStores, totalTargetToys, toysForDaddy, toysRUs, walmart;
+  var choices, daddiesToys, disneyStore, event, firstBlackFridayShopping, getEvent, ohTheHorror, ourChoice, print, setEvent, someToysForDaddy, stores, target, targetToyOptions, targetToys, totalStores, totalTargetToys, toysForDaddy, toysRUs, walmart;
   toysRUs = this.json.Stores[0].storeName;
   target = this.json.Stores[1].storeName;
   walmart = this.json.Stores[2].storeName;
@@ -17,7 +17,11 @@
     this.event = setThis;
   };
   print = function(param) {
-    console.log(param);
+    if (param !== "") {
+      console.log(param);
+    } else {
+      console.log("Sorry, nothing to output here!");
+    }
   };
   firstBlackFridayShopping = function(itIsBlackFriday) {
     var v;
@@ -76,7 +80,7 @@
     v = "What we found to be the hardest part of the entire venture, was trying to decide what toys to buy. For example, at " + target + " we had " + targetToys.length + " options. We could get a " + tt;
     return v;
   };
-  number = function(int, toys) {
+  choices = function(int, toys) {
     var budget, leftOver, toy, v, _i, _len;
     budget = "$" + this.ourBudget;
     this.choice = "";
@@ -106,6 +110,6 @@
   print(ohTheHorror("the day after thanksgiving", totalStores));
   print(stores(this.json));
   print(targetToyOptions(target, targetToys));
-  print(number(totalTargetToys, targetToys));
+  print(choices(totalTargetToys, targetToys));
   print(daddiesToys(toysForDaddy));
 }).call(this);
