@@ -17,6 +17,7 @@ ourChoice       = @json.ourChoice             # boolean
 # variables
 event           = ""                          # String - used for event output
 
+
 # Getter / Accessor
 getEvent = ->
   return @event;
@@ -75,7 +76,7 @@ targetToyOptions = (target, targetToys) ->
   while i < targetToys.length
     @tt = @tt + targetToys[i] + ", "
     i++
-  v = "What we found to be the hardest part of the entire venture, was trying to decide what toys to buy. For example, at #{target} we had #{targetToys.length} options. We could get a #{t}"
+  v = "What we found to be the hardest part of the entire venture, was trying to decide what toys to buy. For example, at #{target} we had #{targetToys.length} options. We could get a #{tt}"
   return v
   
 # Number function
@@ -89,8 +90,22 @@ number = (int, toys) ->
   v = "We liked all of them, but had to make a choice. We chose the #{choice} because we thought our 2 year old would use this more than any of the other #{leftOver} choices. Overall, it was a great experience and we were able to get about $450 worth of merchandise for only $260 with a budget of #{budget}"
   return v
 
+# Method on toysForDaddy Object
+someToysForDaddy = (toy, anotherToy) ->
+  return "By the way, Daddy wants an #{toy} and a #{anotherToy} for christmas! Hint hint."
+
+# Object
+toysForDaddy = 
+  "toys1" : someToysForDaddy("Flat Screen TV", "Blu-Ray Player")
+  "toys2" : someToysForDaddy("XBOX 360", "Recliner")
+  
+daddiesToys = (dadsToys) ->
+  v = dadsToys.toys2
+  return v
+
 print(firstBlackFridayShopping(ourChoice))
 print(ohTheHorror("the day after thanksgiving", totalStores))
 print(stores(@json))
 print(targetToyOptions(target, targetToys))
 print(number(totalTargetToys, targetToys))
+print(daddiesToys(toysForDaddy))
